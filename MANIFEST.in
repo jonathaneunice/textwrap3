@@ -1,0 +1,7 @@
+include README
+include README.rst
+include pytest.ini
+include tox.ini
+include .travis.yml
+include CHANGES.yml
+recursive-include test *.py
