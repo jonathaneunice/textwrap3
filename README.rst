@@ -30,14 +30,14 @@ module that supports Python 2.6 forward. This makes a few new
 APIs such as ``shorten`` and the ``max_lines`` parameter available
 in a compatible way to all Python's in notable current use.
 
-Import and use it just as you would textwrap:
+Import and use it just as you would ``textwrap`` from the standard library::
 
     from textwrap3 import wrap
 
     text = 'long text here...'
     print(wrap(text, 40))
 
-By design, Python 3 sensibilities and expecations rule whenever
+By design, Python 3 sensibilities and expectations rule whenever
 feasible. Especially when wrapping text that includes Unicode
 characters, ``textwrap3``'s results may differ from those of the
 ``textwrap`` of the underlying Python version.  In particular,
@@ -45,9 +45,9 @@ characters, ``textwrap3``'s results may differ from those of the
 characters such as accented letters are considered legitimate word
 characters.
 
-It also adds one tweak, considering the Unicode em-dash 
+It also adds one tweak, considering the Unicode em-dash
 (``'\N{EM DASH}'`` or ``u'\u2014'``) identical to the simulated ASCII em-dash
-``--``.
+``'--'``.
 
 Notes
 =====
@@ -57,8 +57,8 @@ Notes
 * This module is almost entirely the work of Gregory P. Ward
   (``textwrap``'s original author) plus enhancements from the Python
   community.  This separate packaging is just a delivery and
-  compatibility vehicle. It contributs cross-Python
-  version compatibility shims, a few dditional tests, and better
+  compatibility vehicle. It contributes cross-Python
+  version compatibility shims, a few additional tests, and better
   handling of real em-dashes. The vast majority of functionality
   still comes from the standard ``textwrap`` code base, as of the
   Python 3.6 release.
@@ -68,12 +68,11 @@ Installation
 
 To install or upgrade to the latest version::
 
-    pip install -U textwrap3 
+    pip install -U textwrap3
 
 You may need to prefix these with ``sudo`` to authorize
 installation. In environments without super-user privileges, you may want to
 use ``pip``'s ``--user`` option, to install only for a single user, rather
 than system-wide. Depending on your system configuration, you may also
-need to use separate ``pip2`` and ``pip3`` programs to install for Python 
+need to use separate ``pip2`` and ``pip3`` programs to install for Python
 2 and 3 respectively.
-
