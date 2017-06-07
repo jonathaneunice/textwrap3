@@ -21,7 +21,7 @@ setup(
     long_description=open('README.rst', encoding='utf-8').read(),
     url='https://github.com/jonathaneunice/textwrap3',
     license='Python Software Foundation License',
-    py_module='textwrap3',
+    py_modules=['textwrap3'],
     setup_requires=[],
     install_requires=[],
     tests_require=['tox', 'pytest', 'coverage', 'pytest-cov'],
