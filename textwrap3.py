@@ -375,7 +375,6 @@ class TextWrapper:
                             if (len(prev_line) + len(self.placeholder) <=
                                     self.width):
                                 lines[-1] = prev_line + self.placeholder
-                                # raise RuntimeError('added by jse')
                                 break
                         lines.append(indent + self.placeholder.lstrip())
                     break
@@ -475,35 +474,60 @@ def dedent(text):
     """
     # Look for the longest leading string of spaces and tabs common to
     # all lines.
+    debug = False
     margin = None
     text = _whitespace_only_re.sub('', text)
     indents = _leading_whitespace_re.findall(text)
+    if debug:
+        print("--")
+        print('margin', margin)
+        print('text', ascii(text))
+        print('indents', indents)
     for indent in indents:
+        if debug:
+            print('loop indent, margin', ascii(indent), ascii(margin))
         if margin is None:
+            if debug:
+                print('case zero, first indent so guess that as margin')
             margin = indent
 
         # Current line more deeply indented than previous winner:
         # no change (previous winner is still on top).
         elif indent.startswith(margin):
+            if debug:
+                print('case one. this indent longer and consiste so keep current')
             pass
 
         # Current line consistent with and no deeper than previous winner:
         # it's the new winner.
         elif margin.startswith(indent):
+            if debug:
+                print('case two, current line <= indent and consistent')
             margin = indent
 
         # Find the largest common whitespace between current line and previous
         # winner.
         else:
+            if debug:
+                print('case three')
             for i, (x, y) in enumerate(zip(margin, indent)):
+                if debug:
+                    print('ixy', i, repr(x), repr(y))
                 if x != y:
+                    if debug:
+                        print('x != y, set margin to', repr(margin[:i]),
+                              'and break')
                     margin = margin[:i]
                     break
             else:
+                print(ascii(text))
+                print('\n'.join([ascii(x) for x in indents]))
+                print('indent, margin', indent, margin)
+                raise RuntimeError('two')
                 margin = margin[:len(indent)]
 
     # sanity check (testing/debugging only)
-    if 0 and margin:  # pragma: no cover
+    if 0 and margin:            # pragma: no cover
         for line in text.split("\n"):
             assert not line or line.startswith(margin), \
                    "line = %r, margin = %r" % (line, margin)

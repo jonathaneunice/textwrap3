@@ -37,13 +37,12 @@ Import and use it just as you would ``textwrap`` from the standard library::
     text = 'long text here...'
     print(wrap(text, 40))
 
-By design, Python 3 sensibilities and expectations rule whenever
-feasible. Especially when wrapping text that includes Unicode
-characters, ``textwrap3``'s results may differ from those of the
-``textwrap`` of the underlying Python version.  In particular,
-``textwrap3`` uses the ``re.UNICODE`` flag so that non-ASCII
-characters such as accented letters are considered legitimate word
-characters.
+By design, Python 3 sensibilities and expectations rule whenever feasible.
+Especially when wrapping text that includes Unicode characters, ``textwrap3``'s
+results may differ from those of the ``textwrap`` of the underlying Python
+version (esp. 2.x). In particular, ``textwrap3`` uses the ``re.UNICODE`` flag so
+that non-ASCII characters such as accented letters are considered legitimate
+word characters.
 
 It also adds one tweak, considering the Unicode em-dash
 (``'\N{EM DASH}'`` or ``u'\u2014'``) identical to the simulated ASCII em-dash
