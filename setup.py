@@ -14,7 +14,7 @@ def lines(text):
 
 setup(
     name='textwrap3',
-    version='0.9.0',
+    version='0.9.1',
     author='Jonathan Eunice',
     author_email='jonathan.eunice@gmail.com',
     description="textwrap from Python 3.6 backport (plus a few tweaks)",

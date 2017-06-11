@@ -1,4 +1,16 @@
 -
+  version: 0.9.1
+  date: June 10, 2017
+  notes: >
+    Bumped to 100% test coverage, ahead even of the `textwrap` module
+    in the Python standard library.
+    
+    Enhanced tests all sumbitted to Python community through Github PRs.
+    In the meanwhile, they're all here.
+    
+    Also eliminated a tiny bit of dead code.
+
+-
   version: 0.9.0
   date: June 7, 2017
   notes: >

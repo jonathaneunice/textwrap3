@@ -20,7 +20,7 @@
     :alt: Wheel packaging support
     :target: https://pypi.python.org/pypi/textwrap3
 
-.. |coverage| image:: https://img.shields.io/badge/test_coverage-99%25-0000FF.svg
+.. |coverage| image:: https://img.shields.io/badge/test_coverage-100%25-663399.svg
     :alt: Test line coverage
     :target: https://pypi.python.org/pypi/textwrap3
 
@@ -28,21 +28,27 @@
 ``textwrap3`` is a compatibility back-port of Python 3.6's ``textwrap``
 module that supports Python 2.6 forward. This makes a few new
 APIs such as ``shorten`` and the ``max_lines`` parameter available
-in a compatible way to all Python's in notable current use.
+in a compatible way to all Python versions typically in current use.
 
-Import and use it just as you would ``textwrap`` from the standard library::
+Import and use it like you would ``textwrap`` from the standard library::
 
     from textwrap3 import wrap
 
     text = 'long text here...'
     print(wrap(text, 40))
 
-By design, Python 3 sensibilities and expectations rule whenever feasible.
-Especially when wrapping text that includes Unicode characters, ``textwrap3``'s
-results may differ from those of the ``textwrap`` of the underlying Python
-version (esp. 2.x). In particular, ``textwrap3`` uses the ``re.UNICODE`` flag so
-that non-ASCII characters such as accented letters are considered legitimate
-word characters.
+The standard `textwrap documentation <https://docs.python.org/3.6/library/textwrap.html>`_
+is the best reference material.
+
+Bias and Tweaks
+===============
+
+By design, Python 3 sensibilities and expectations rule. Especially when
+processing text that includes Unicode characters, ``textwrap3``'s results may
+differ a bit from those of the ``textwrap`` of the underlying Python version
+(esp. 2.x). In particular, ``textwrap3`` uses the ``re.UNICODE`` flag so that
+non-ASCII characters such as accented letters are considered legitimate word
+characters.
 
 It also adds one tweak, considering the Unicode em-dash
 (``'\N{EM DASH}'`` or ``u'\u2014'``) identical to the simulated ASCII em-dash

@@ -1,0 +1,8 @@
+[report]
+exclude_lines =
+    pragma: no cover
+    if debug:
+    raise NotImplementedError
+    if 0:
+    if False:
+    if __name__ == .__main__.:
