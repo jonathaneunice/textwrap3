@@ -281,38 +281,26 @@ What a mess!
         self.check_split(text, expect)
 
     def test_unicode_em_dash(self):
-        # Test text with true Unicode em-dashes (U+2014)
+        # Test text with Unicode em-dashes (U+2014)
         text = u"Em-dashes should be written \u2014 thus."
         self.check_wrap(text, 25,
                         ["Em-dashes should be",
                          u"written \u2014 thus."])
 
-        # Probe the boundaries of the true em-dash,
-        # ie. '\N{EM DASH}' or '\u2014'. Note tweaked test
-        # lengths vs. the simulated em-dash ('--') test given
-        # their different string lengths.
+        # Probe the boundaries of the em-dash. Parallels ASCII tests
+        # but widths - 1 since len('\u2014') = len('--') - 1
         self.check_wrap(text, 28,
                         ["Em-dashes should be written",
                          u"\u2014 thus."])
-        self.check_wrap(text, 29,
-                        [u"Em-dashes should be written \u2014",
-                         "thus."])
-
         expect = [u"Em-dashes should be written \u2014",
                   "thus."]
-        self.check_wrap(text, 30, expect)
-        self.check_wrap(text, 34, expect)  # tweaked length vs -- test
-        self.check_wrap(text, 36,
+        self.check_wrap(text, 29, expect)
+        self.check_wrap(text, 34, expect)
+        self.check_wrap(text, 35,
                         [u"Em-dashes should be written \u2014 thus."])
 
-        # Tests for improperly written similated em-dash ('---') omitted
-        # here because irrelevant to true em-dash handling. In theory we
-        # could test adjacent combinations of '\N{EM DASH}' with other
-        # dash-like forms, e.g. '\N{HYPHEN-MINUS}', '\N{HYPHEN}', and
-        # '\N{EN DASH}'. But there are a lot of them
-        # (see e.g. https://www.cs.tut.fi/~jkorpela/dashes.html)
-        # Their combinations do not make sense and are not in
-        # quasi-common use, contrary to multi-ASCII-hyphens.
+        # Tests for adjacent glyphs not needed for Unicode em-dash
+        # because unlike adjacent hypens, not meaningful or common.
 
         # All of the above behaviour could be deduced by probing the
         # _split() method. Note mixed real and simulated em-dashes.
@@ -327,7 +315,6 @@ What a mess!
         expect = ["and", " ", "then", u"\u2014", "bam!", u"\u2014",
                   "he", " ", "was", " ", "gone"]
         self.check_split(text, expect)
-
 
     def test_unix_options (self):
         # Test that Unix-style command-line options are wrapped correctly.
