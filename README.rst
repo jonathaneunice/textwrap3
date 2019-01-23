@@ -26,7 +26,10 @@
 
 
 ``textwrap3`` is a compatibility back-port of Python 3.6's ``textwrap``
-module that supports Python 2.6 forward. This makes a few new
+module that supports Python 2.6 forward. (Though honestly, if you're not
+already using *at least* 2.7, you're way behind the times!) 
+
+This makes a few new
 APIs such as ``shorten`` and the ``max_lines`` parameter available
 in a compatible way to all Python versions typically in current use.
 
